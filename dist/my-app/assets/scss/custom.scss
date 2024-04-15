@@ -1,0 +1,45 @@
+/*!
+* Version: 1.2.0
+* Template: Example Project
+* Author: iqonic.design
+* Design and Developed by: iqonic.design
+* NOTE: This file contains the styling for Template.
+*
+*/
+
+// Configuration
+@import "./bootstrap/functions";
+// Variables
+@import "./hope-ui-design-system/variable";
+@import "./hope-ui-design-system/variables/index";
+@import "./bootstrap/variables";
+@import "./bootstrap/mixins";
+// MLM Design System Mixin And Helper
+@import "./hope-ui-design-system/helper/functions";
+@import "./hope-ui-design-system/helper/mixins";
+@import "./hope-ui-design-system/helper/reboot";
+@import "./custom/auth/authentication";
+@import "./custom/kanban/kanban";
+@import "./custom/pricing/pricing";
+@import "./custom/ui-kit/ui-kit";
+.error_msg {
+    margin-top: 0.25rem;
+    font-size: .875em;
+    color: #dc3545;
+}
+
+.mat-mini-fab {
+    margin-right: 2px !important;
+    width: 35px !important;
+    height: 35px !important;
+}
+
+.material-icons {
+    font-size: 19px;
+}
+
+th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+    padding: 1rem 0.9rem !important;
+}

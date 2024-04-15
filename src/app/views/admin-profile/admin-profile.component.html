@@ -1,0 +1,145 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="flex-wrap d-flex justify-content-between align-items-center p-4">
+            <div>
+                <h3 class="mat-h1">Admin Profile</h3>
+            </div>
+            <div>
+                <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                    <ol class="mb-0 breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a routerLink="/admin/dashboard">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Admin Profile</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <mat-card-title>My Profile</mat-card-title>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <div class="row m-4">
+                <div class="profile-title d-flex align-items-center justify-content-center">
+                    <div class="media">
+                        <img class="img-100 img-fluid  shadow rounded-circle update_img_0 profile_img" [src]="imgURL" alt="">
+                        <div class="avatar-edit">
+                            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" (change)="onFileSelected($event)"/>
+                            <label for="imageUpload"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="edit">edit</mat-icon></label>
+                        </div>
+                        <div class="media-body text-center">
+                            <h3 class="mb-0 f-20 txt-primary mat-h3">{{loginName}}</h3>
+                            <p class="f-12 mb-0">{{userLoginType}}</p>
+                            <p class="f-8">(GM - Senior_name)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+            <form class="example-form" [formGroup]="adminPassword" (ngSubmit)="onSubmit()">
+                <mat-card-content class="m-3">
+                    
+
+                    <mat-form-field class="example-full-width mb-3 pt-2" appearance="outline">
+                        <mat-label>Current Password</mat-label>
+                        <input type="password" matInput formControlName="password" placeholder="********">
+
+                        <mat-error *ngIf="adminPassword.get('password').hasError('required')">
+                            Current Password is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width mb-3" appearance="outline">
+                        <mat-label>New Password</mat-label>
+                        <input type="password" matInput formControlName="newPassword" placeholder="********">
+
+                        <mat-error *ngIf="adminPassword.get('newPassword').hasError('required')">
+                            New Password is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width mb-3" appearance="outline">
+                        <mat-label>Confirm Password</mat-label>
+                        <input type="password" matInput formControlName="confPassword" placeholder="********">
+
+                        <mat-error *ngIf="adminPassword.get('confPassword').hasError('required')">
+                            Confirm Password is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="adminPassword.hasError('passwordsNotMatch')">Password and Confirm Password must match.</mat-error>                    </mat-form-field>
+                    <!-- <div class="form-group">
+                        <label for="confPassword">Confirm Password</label>
+                        <input formControlName="confPassword" id="confPassword" type="password" class="form-control">
+                        <div *ngIf="f.confPassword.touched && f.confPassword.invalid && f.confPassword.submitted" class="">
+                            <div *ngIf="f.confPassword.errors.required">Password is required.</div>
+                            <div *ngIf="f.confPassword.errors.confirmPasswordValidator">Password and Confirm Password must be match.</div>
+                        </div>
+                    </div> -->
+                </mat-card-content>
+                <mat-divider></mat-divider>
+                <mat-card-actions class="text-center">
+                    <button mat-raised-button color="primary">Save</button>
+                </mat-card-actions>
+            </form>
+        </mat-card>
+    </div>
+    <div class="col-md-8">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <mat-card-title>Edit Profile</mat-card-title>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <form class="example-form" [formGroup]="adminProfileForm" (ngSubmit)="onSubmitForm()">
+                <mat-card-content class="m-3">
+                    <mat-form-field s appearance="outline">
+                        <mat-label>Full Name</mat-label>
+                        <input type="text" matInput formControlName="name" placeholder="Enter Full Name">
+
+                        <mat-error *ngIf="adminProfileForm.get('name').hasError('required')">
+                            Full Name is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width mb-2 pt-1" appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input type="email" matInput formControlName="email" placeholder="Enter Email">
+                        <mat-error *ngIf="adminProfileForm.get('email').hasError('email') && !adminProfileForm.get('email').hasError('required')">
+                            Please enter a valid email address
+                        </mat-error>
+                        <mat-error *ngIf="adminProfileForm.get('email').hasError('required')">
+                            Email is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width mb-2 pt-1" appearance="outline">
+                        <mat-label>Mobile Number</mat-label>
+                        <input type="text" matInput formControlName="number" pattern="[789][0-9]{9}" minlength="10" maxlength="10" (input)="onMobileInputChange($event)" placeholder="Enter Mobile Number">
+
+                        <mat-error *ngIf="adminProfileForm.get('number').hasError('required')">
+                            Mobile Number is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="adminProfileForm.get('number').hasError('pattern')">
+                            Mobile number is start only 7,8,9
+                        </mat-error>
+                    </mat-form-field>
+                    <!-- <mat-form-field class="example-full-width mb-2 pt-1" appearance="outline">
+                        <mat-label>Admin Profile *</mat-label>
+
+                        <mat-toolbar>                        
+                            <input type="file"  accept="image/*" class="form-control" name="adminProfile" id="fileInput" formControlName="adminProfile" (change)="onFileSelected($event)"  >
+                            <img [src]="imgURL" height="100" *ngIf="imgURL" class="imgURL">
+                            <input matInput class="form-control img_name" [value]="img_name ? img_name : 'Select Image'"  disabled/>
+                        </mat-toolbar>
+                        <mat-error *ngIf="adminProfileForm.get('adminProfile').hasError('required')">
+                            Admin Profileis <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field> -->
+                </mat-card-content>
+                <mat-divider></mat-divider>
+                <mat-card-actions class="text-center">
+                    <button mat-raised-button color="primary">Save</button>
+                    <a href=""></a>
+                </mat-card-actions>
+            </form>
+        </mat-card>
+    </div>
+</div>

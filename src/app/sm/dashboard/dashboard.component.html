@@ -1,0 +1,95 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <div class="row justify-content-around">
+                <div class="col-lg-4 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="">
+                                    Total User
+                                    <h2 class="counter" [countUp]="TotalUser">0</h2>
+                                </div>
+                                <div class=" text-white rounded">
+                                    <img src="../../../assets/images/icons/users.png" width="80" alt="">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="">
+                                    Total DSM
+                                    <h2 class="counter" [countUp]="DSMCount">0</h2>
+                                </div>
+                                <div class=" text-white rounded">
+                                    <img src="../../../assets/images/icons/users.png" width="80" alt="">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="">
+                                    Total SA
+                                    <h2 class="counter" [countUp]="SACount">0</h2>
+                                </div>
+                                <div class=" text-white rounded">
+                                    <img src="../../../assets/images/icons/users.png" width="80" alt="">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-3 col-md-6">
+                    <a routerLink="/admin/gst_report">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="">
+                                        Total GST
+                                        <h2 class="counter" [countUp]="80">0</h2>
+                                    </div>
+                                    <div class=" text-white rounded">
+                                        <img src="../../../assets/images/icons/gst.png" width="80" alt="">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <a routerLink="/admin/tds_report">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="">
+                                        Total TDS
+                                        <h2 class="counter" [countUp]="45">0</h2>
+                                    </div>
+                                    <div class=" text-white rounded">
+                                        <img src="../../../assets/images/icons/tds.png" width="80" alt="">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

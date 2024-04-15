@@ -1,0 +1,12 @@
+mat-form-field {
+    width: 15%;
+}
+
+@media screen and (max-width: 991.98px) {
+    mat-form-field {
+        width: 50%;
+    }
+    .mat-card-header {
+        flex-wrap: wrap;
+    }
+}

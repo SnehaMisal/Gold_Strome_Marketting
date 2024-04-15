@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>
+    Generated Bill</h1>
+<div mat-dialog-content class="p-3 border">
+    <table class="table table-striped table-responsive">
+        <thead>
+            <tr>
+                <th>Expence Type</th>
+                <th>Expence Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let expense of expenses">
+                <td>{{ expense.expenseType }}</td>
+                <td>{{ expense.expenseAmount }}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Bill Amount</th>
+                <th>2000</th>
+            </tr>
+        </tfoot>
+    </table>
+    <p [innerHTML]="data.description">{{ data.description }}</p>
+</div>
+<div mat-dialog-actions class="justify-content-center">
+    <button mat-button color="warn" (click)="closeDialog()">Close</button>
+</div>

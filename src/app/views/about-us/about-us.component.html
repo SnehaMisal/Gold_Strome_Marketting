@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="flex-wrap d-flex justify-content-between align-items-center p-4">
+            <div>
+                <h3 class="mat-h1">About Us</h3>
+            </div>
+            <div>
+                <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                    <ol class="mb-0 breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a routerLink="/admin/dashboard">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">About Us</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <mat-card>
+        <form action="" method="post" [formGroup]="aboutUsForm" (ngSubmit)="onSubmit()">
+            <mat-card-content>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div matInput formControlName="about" name="about" id="about" [ngxSummernote]="config" required></div>
+
+                    </div>
+                </div>
+            </mat-card-content>
+            <mat-card-actions class="text-center">
+                <button type="submit" mat-button mat-raised-button color="primary" cdkFocusInitial>Update</button>
+            </mat-card-actions>
+        </form>
+    </mat-card>
+</div>

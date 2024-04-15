@@ -1,0 +1,82 @@
+<h1 mat-dialog-title>{{data ? 'Edit':'Add'}} SA</h1>
+<form action="" method="post" [formGroup]="createSA" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content>
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Select GM</mat-label>
+                    <mat-select matInput formControlName="GM_Name" (valueChange)="selectGM($event)">
+                        <mat-option *ngFor="let gmUser of gmList" [value]="gmUser">{{gmUser.nameGM }}</mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="createSA.get('GM_Name').hasError('required')">
+                        Select GM Name is <strong>required</strong>
+                      </mat-error>
+                </mat-form-field>
+            </div>
+            
+            <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Select SM</mat-label>
+                    <mat-select matInput formControlName="SM_Name" >
+                        <mat-option *ngFor="let smUser of smList" [value]="smUser">{{smUser.nameSM }}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="createSA.get('SM_Name').hasError('required')">
+                        Select SM is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field class="example-full-width mb-2 pt-1" appearance="outline">
+                    <mat-label>Full Name</mat-label>
+                    <input type="text" matInput name="nameSA" id="nameSA" formControlName="nameSA" required>
+                    <!-- <input type="text" matInput formControlName="nameSA" placeholder="Enter Full Name"> -->
+                    <mat-error *ngIf="createSA.get('nameSA').hasError('required')">
+                        Full Name is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field class="example-full-width mb-2 pt-1" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput formControlName="email" placeholder="Enter Email">
+                    <mat-error *ngIf="createSA.get('email').hasError('email') && !createSA.get('email').hasError('required')">
+                        Please enter a valid email address
+                    </mat-error>
+                    <mat-error *ngIf="createSA.get('email').hasError('required')">
+                        Email is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field class="example-full-width mb-2 pt-1" appearance="outline">
+                    <mat-label>Mobile Number</mat-label>
+                    <input type="text" matInput formControlName="mobileNumber" pattern="[789][0-9]{9}" minlength="10" maxlength="10" (input)="onMobileInputChange($event)" placeholder="Enter Mobile Number">
+
+                    <mat-error *ngIf="createSA.get('mobileNumber').hasError('required')">
+                        Mobile Number is <strong>required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="createSA.get('mobileNumber').hasError('pattern')">
+                        Mobile number is start only 7,8,9
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field class="example-full-width mb-2 pt-1" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input type="text" matInput formControlName="password" minlength="8" maxlength="15" placeholder="Enter Password">
+
+                    <mat-error *ngIf="createSA.get('password').hasError('required')">
+                        Password is <strong>required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="createSA.get('password').hasError('minlength')">
+                        Password is minimum 8 letter<strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <div mat-dialog-actions class="justify-content-center">
+        <button mat-button mat-raised-button [mat-dialog-close]="false" color="warn" type="button">Close</button>
+        <button type="submit" mat-button mat-raised-button color="primary" cdkFocusInitial>{{data ? 'Update':'Save'}}</button>
+    </div>
+</form>

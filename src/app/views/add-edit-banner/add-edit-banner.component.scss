@@ -1,0 +1,47 @@
+#fileInput {
+    position: absolute;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+  }
+  .img_name:disabled{
+    background-color: #fff;
+    // border: 1px solid #e0e0e0;
+    // padding: 0.5rem 1rem;
+    height: 18px;
+    color: currentColor;
+    font-weight: 400;
+    font-size: 14px;
+  }
+  .mat-toolbar-single-row {
+    height: auto !important;
+    background: transparent;
+    padding: 0;
+  }
+  
+  .mat-toolbar-single-row button {
+    width: 100px;
+  }
+  
+//   .mat-form-field {
+//     width: 100%;
+//   }
+  .preview {
+    max-width: 200px;
+    vertical-align: middle;
+  }
+  .mat-form-field-appearance-legacy.mat-form-field-disabled .mat-form-field-underline{
+        background-image:none !important
+  }
+  .imgURL{
+    height: 120px;
+    width: 120px;
+    min-width: 120px;
+    object-fit: contain;
+    border: 1px dotted #ddd;
+    margin-right: 20px;
+    padding: 10px;
+  }

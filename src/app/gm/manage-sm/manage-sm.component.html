@@ -1,0 +1,129 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="flex-wrap d-flex justify-content-between align-items-center p-4">
+            <div>
+                <h3 class="mat-h1">Manage SM Login</h3>
+            </div>
+            <div>
+                <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                    <ol class="mb-0 breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a routerLink="/gm/dashboard">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Manage SM Login</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <mat-card>
+        <mat-card-header class="justify-content-between align-items-center">
+            <mat-card-title><button mat-raised-button color="primary" (click)="addEditSM()">Create Login</button></mat-card-title>
+            <mat-form-field appearance="outline">
+                <mat-label>Select Status</mat-label>
+                <mat-select matInput>
+                    <mat-option value="0">Pending</mat-option>
+                    <mat-option value="1">Accepted</mat-option>
+                    <mat-option value="2">Rejected</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Search</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+            </mat-form-field>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="table-responsive">
+                <table mat-table [dataSource]="dataSource" class="table table-striped table-responsive">
+
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="srNo">
+                        <th mat-header-cell *matHeaderCellDef> Sr. No. </th>
+                        <td mat-cell *matCellDef="let item; let i = index"> {{ (paginatorRef.pageIndex * paginatorRef.pageSize) + (i + 1) }} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="joinDate">
+                        <th mat-header-cell *matHeaderCellDef> Create Date </th>
+                        <td mat-cell *matCellDef="let element"> {{element.createdAt | date:"dd-MM-yyyy "}} | {{element.createdAt | date:" hh:mm:ss a "}} </td>
+                    </ng-container>
+                    <!-- Name Column -->
+                    <!-- <ng-container matColumnDef="agmName">
+                        <th mat-header-cell *matHeaderCellDef> AGM Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.fName}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="dsmName">
+                        <th mat-header-cell *matHeaderCellDef> DSM Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.fName}} </td>
+                    </ng-container> -->
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="fName">
+                        <th mat-header-cell *matHeaderCellDef> Full Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.nameSM}} </td>
+                    </ng-container>
+
+                    <!-- Email ID Column -->
+                    <ng-container matColumnDef="email">
+                        <th mat-header-cell *matHeaderCellDef> Email ID </th>
+                        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                    </ng-container>
+
+                    <!-- Mobile No Column -->
+                    <ng-container matColumnDef="mobno">
+                        <th mat-header-cell *matHeaderCellDef> Mobile No. </th>
+                        <td mat-cell *matCellDef="let element"> {{element.mobileNumber}} </td>
+                    </ng-container>
+                    <!-- Status Column -->
+                    <ng-container matColumnDef="approvalstatus">
+                        <th mat-header-cell *matHeaderCellDef>Approval Status </th>
+                        <td mat-cell *matCellDef="let element">
+                            <p class="fw-bold  p-2 mb-0" [class.text-primary]="element.ApprovalStatus === 'Pending'" [class.text-success]="element.ApprovalStatus === 'Accepted'" [class.text-danger]="element.ApprovalStatus === 'Rejected'">
+                                {{ element.ApprovalStatus }}
+                            </p>
+                        </td>
+                    </ng-container>
+                    <!-- Access Column -->
+                    <!-- Status Column -->
+                    <ng-container matColumnDef="status">
+                        <th mat-header-cell *matHeaderCellDef> Status </th>
+                        <td mat-cell *matCellDef="let element">
+                            <mat-slide-toggle [checked]="element.status === 'Active'" (change)="toggleSM(element)">
+                                {{ element.status === 'Active' ? 'Active' : 'Inactive' }}   
+                            </mat-slide-toggle>
+                        </td>
+                    </ng-container>
+                    <!-- Action Column -->
+                    <ng-container matColumnDef="action">
+                        <th mat-header-cell *matHeaderCellDef> Action </th>
+                        <td mat-cell *matCellDef="let element">
+                            <a [routerLink]="['/gm/dsmList']" mat-mini-fab color="success">
+                                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="visibility">visibility</mat-icon>
+                            </a>
+                            <!-- <button mat-mini-fab color="accent"><mat-icon fontSize="small">visibility</mat-icon></button> -->
+                            <button mat-mini-fab color="primary" (click)="editSM(element)"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="edit">edit</mat-icon></button>
+                            <button mat-mini-fab color="warn" (click)="deleteSM('gm_sm_Table',element._id)"><mat-icon>delete</mat-icon></button>
+                        </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                    <!-- Row shown when there is no matching data. -->
+                    <ng-container *ngIf="dataSourceLength !== 0">
+                        <tr *matNoDataRow
+                            class="mat-row text-center">
+                            <td class="mat-cell"
+                                colspan="4">
+                                No data matching the filter "{{input.value}}"
+                            </td>
+                        </tr>
+                      </ng-container>
+                </table>
+                <ng-container *ngIf="dataSourceLength == 0">
+                    <ng-container class="mat-row text-center">
+                      <div class="mat-cell text-center" colspan="4"> No SM found for this CEO </div>
+                    </ng-container>
+                  </ng-container> 
+            </div>
+            <mat-paginator #paginatorRef [pageSizeOptions]="[10]" aria-label="Select page of periodic elements">
+            </mat-paginator>
+        </mat-card-content>
+    </mat-card>
+</div>

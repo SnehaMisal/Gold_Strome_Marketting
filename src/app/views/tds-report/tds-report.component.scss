@@ -1,0 +1,67 @@
+mat-form-field {
+    width: 15%;
+}
+
+th.mat-header-cell {
+    text-align: center;
+    font-size: .9rem;
+    text-transform: Capitalize;
+    letter-spacing: .2px;
+    background-color: #f5f6fa;
+}
+
+th.mat-footer-cell {
+    text-align: center;
+    font-size: .9rem;
+    text-transform: Capitalize;
+    letter-spacing: .2px;
+    background-color: #f5f6fa;
+}
+
+table tfoot tr {
+    background-color: #f5f6fa;
+}
+
+mat-row,
+mat-header-row,
+mat-footer-row,
+th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell,
+table {
+    border-color: #0000001f;
+}
+
+td.mat-cell {
+    font-size: .9rem;
+    text-align: center;
+    color: #232d42;
+    vertical-align: middle;
+}
+
+.mat-table-sticky {
+    font-size: .9rem;
+    text-align: center;
+    text-transform: Capitalize;
+    letter-spacing: .2px;
+    border-color: #0000001f;
+    background-color: #f5f6fa;
+}
+
+th.mat-header-row {
+    background-color: #f5f6fa;
+}
+
+.example-container {
+    height: 70vh;
+    overflow: auto;
+}
+
+#export_Excel {
+    height: 70vh;
+    overflow: auto;
+}
+
+.mat-mdc-table-sticky {
+    border-top: 1px solid #e0e0e0;
+}

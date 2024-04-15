@@ -1,0 +1,99 @@
+<h1 mat-dialog-title>{{data ? 'Edit':'Add'}} DSM</h1>
+<form action="" method="post" [formGroup]="createDSM" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content>
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Select SM</mat-label>
+                    <mat-select formControlName="SM_Name" matInput>
+                        <mat-option *ngFor="let smUser of smList" [value]="smUser">{{smUser.nameSM }}</mat-option>
+                        <!-- <mat-option value="0">Angelica Ramos</mat-option>
+                        <mat-option value="1">Airi Satou</mat-option>
+                        <mat-option value="2">Francis Mitcham</mat-option> -->
+                    </mat-select>
+                    <mat-error *ngIf="createDSM.get('SM_Name').hasError('required')">
+                        Select SM is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field class="example-full-width mb-2 pt-1" appearance="outline">
+                    <mat-label>Full Name</mat-label>
+                    <input type="text" matInput name="nameDSM" id="nameDSM" formControlName="nameDSM" required>
+                    <!-- <input type="text" matInput formControlName="nameDSM" placeholder="Enter Full Name"> -->
+                    <mat-error *ngIf="createDSM.get('nameDSM').hasError('required')">
+                        Full Name is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field class="example-full-width mb-2 pt-1" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput formControlName="email" placeholder="Enter Email">
+                    <mat-error *ngIf="createDSM.get('email').hasError('email') && !createDSM.get('email').hasError('required')">
+                        Please enter a valid email address
+                    </mat-error>
+                    <mat-error *ngIf="createDSM.get('email').hasError('required')">
+                        Email is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field class="example-full-width mb-2 pt-1" appearance="outline">
+                    <mat-label>Mobile Number</mat-label>
+                    <input type="text" matInput formControlName="mobileNumber" pattern="[789][0-9]{9}" minlength="10" maxlength="10" (input)="onMobileInputChange($event)" placeholder="Enter Mobile Number">
+
+                    <mat-error *ngIf="createDSM.get('mobileNumber').hasError('required')">
+                        Mobile Number is <strong>required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="createDSM.get('mobileNumber').hasError('pattern')">
+                        Mobile number is start only 7,8,9
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>State</mat-label>
+                    <mat-select formControlName="state" matInput (valueChange)="selectState($event)">
+                        <!-- <mat-option value="">Select</mat-option> -->
+                        <mat-option *ngFor="let state of states" [value]="state" [attr.data-state-name]="state.name">{{ state.name }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="createDSM.get('state').hasError('required')">
+                        Select State is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>City</mat-label>
+                    <mat-select formControlName="city" matInput>
+                        <!-- <mat-option value="">Select</mat-option> -->
+                        <mat-option *ngFor="let city of cities" [value]="city" [attr.data-city-name]="city.name">{{ city.name }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="createDSM.get('city').hasError('required')">
+                        Select City is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field class="example-full-width mb-2 pt-1" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input type="text" matInput formControlName="password" minlength="8" maxlength="15" placeholder="Enter Password">
+
+                    <mat-error *ngIf="createDSM.get('password').hasError('required')">
+                        Password is <strong>required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="createDSM.get('password').hasError('minlength')">
+                        Password is minlength 8 letter <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <div mat-dialog-actions class="justify-content-center">
+        <button mat-button mat-raised-button [mat-dialog-close]="false" color="warn" type="button">Close</button>
+        <button type="submit" mat-button mat-raised-button color="primary" cdkFocusInitial>{{data ? 'Update':'Save'}}</button>
+    </div>
+</form>

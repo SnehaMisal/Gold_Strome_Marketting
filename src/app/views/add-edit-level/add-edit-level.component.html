@@ -1,0 +1,65 @@
+<h1 mat-dialog-title>{{data ? 'Edit':'Add'}} Level & Commission</h1>
+<form action="" method="post" [formGroup]="levelForm" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content>
+        <div class="row">
+            <div class="col-md-12">
+                <mat-form-field class="example-full-width mb-2 pt-1" appearance="outline">
+                    <mat-label>Level Name</mat-label>
+                    <input type="text" matInput name="levelName" id="levelName" formControlName="levelName" required>
+                    <!-- <input type="text" matInput formControlName="fName" placeholder="Enter Full Name"> -->
+                    <mat-error *ngIf="levelForm.get('levelName').hasError('required')">
+                        Level Name is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-12">
+                <mat-form-field class="example-full-width mb-2 pt-1" appearance="outline">
+                    <mat-label>Minimum User</mat-label>
+                    <input type="number" matInput name="minUser" id="minUser" formControlName="minUser" required>
+                    <!-- <input type="text" matInput formControlName="fName" placeholder="Enter Full Name"> -->
+                    <mat-error *ngIf="levelForm.get('minUser').hasError('required')">
+                        Minimum User is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-12">
+                <mat-form-field class="example-full-width mb-2 pt-1" appearance="outline">
+                    <mat-label>L1 Commission</mat-label>
+                    <input type="number" matInput name="l1Commission" id="l1Commission" formControlName="l1Commission" min="0" max="100">
+                    <!-- <input type="text" matInput formControlName="fName" placeholder="Enter Full Name"> -->
+                    <!-- <mat-error *ngIf="levelForm.get('minUser').hasError('required')">
+                        Minimum User is <strong>required</strong>
+                    </mat-error> -->
+                </mat-form-field>
+            </div>
+            <div class="col-md-12">
+                <mat-form-field class="example-full-width mb-2 pt-1" appearance="outline">
+                    <mat-label>L2 Commission</mat-label>
+                    <input type="number" matInput name="l2Commission" id="l2Commission" formControlName="l2Commission" min="0" max="100">
+
+                </mat-form-field>
+            </div>
+            <div class="col-md-12">
+                <mat-form-field class="example-full-width mb-2 pt-1" appearance="outline">
+                    <mat-label>Downline Referral Commission</mat-label>
+                    <input type="number" matInput name="downlineRefComm" id="downlineRefComm" formControlName="downlineRefComm" min="0" max="100">
+
+                </mat-form-field>
+            </div>
+            <!-- <div class="col-md-12">
+                <mat-form-field appearance="outline">
+                    <mat-label>Select Allow Commission</mat-label>
+                    <mat-select formControlName="allowCommission" matInput multiple="">
+                        <mat-option value="L1">L1</mat-option>
+                        <mat-option value="L2">L2</mat-option>
+                        <mat-option value="DR">Downline Referrals</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div> -->
+        </div>
+    </div>
+    <div mat-dialog-actions class="justify-content-center">
+        <button mat-button mat-raised-button [mat-dialog-close]="false" color="warn" type="button">Close</button>
+        <button type="submit" mat-button mat-raised-button color="primary" cdkFocusInitial>{{data ? 'Update':'Save'}}</button>
+    </div>
+</form>

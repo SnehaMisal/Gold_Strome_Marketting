@@ -1,0 +1,278 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": [
+    {
+      "name": "typicode"
+    }
+  ],
+  "admin": [
+    {
+      "fName": "Sneha Misal",
+      "mobno": "9999999999",
+      "email": "sneha@gmail.com",
+      "adminType": "GM",
+      "adminAccess": "SM",
+      "password": "12345678",
+      "joinDate": "2023-09-18T04:32:03.485Z",
+      "id": 2
+    },
+    {
+      "fName": "sadas",
+      "mobno": "9999999999",
+      "email": "asa@asd",
+      "adminType": "GM",
+      "adminAccess": [
+        "SM"
+      ],
+      "password": "uiyjyujghjgyhfg",
+      "joinDate": "2023-09-21T09:06:24.944Z",
+      "id": 3
+    },
+    {
+      "fName": "asd",
+      "mobno": "9999999999",
+      "email": "asdas@dssd",
+      "adminType": "GM",
+      "adminAccess": [
+        "SM"
+      ],
+      "password": "gyhgggsdfsdf",
+      "joinDate": "2023-09-21T09:07:16.011Z",
+      "id": 4
+    }
+  ],
+  "user": [
+    {
+      "id": 1,
+      "fName": "Angelica Ramos",
+      "joinDate": "2023-08-25T11:07:44.327Z",
+      "email": "demo@gmail.com",
+      "mobno": "9999999999",
+      "level": "Level 1",
+      "totalIncome": 1050,
+      "referralId": "#tnst18",
+      "active": false
+    },
+    {
+      "id": 2,
+      "fName": "harshada",
+      "mobno": "8888889999",
+      "email": "harshada@gmail",
+      "joinDate": "2023-05-25T11:07:44.327Z",
+      "referralId": "#2543",
+      "level": "Level 1",
+      "active": true,
+      "totalIncome": "3000"
+    },
+    {
+      "id": 3,
+      "fName": "sneha",
+      "mobno": "9999999999",
+      "email": "sneha@gmail",
+      "joinDate": "2023-08-25T11:07:44.327Z",
+      "referralId": "#6543",
+      "level": "Level 1",
+      "active": true,
+      "totalIncome": "2000"
+    },
+    {
+      "id": 4,
+      "fName": "harshada",
+      "mobno": "8888889999",
+      "email": "harshada@gmail",
+      "joinDate": "2023-05-25T11:07:44.327Z",
+      "referralId": "#2543",
+      "level": "Level 1",
+      "active": true,
+      "totalIncome": "3000"
+    },
+    {
+      "id": 5,
+      "fName": "sneha",
+      "mobno": "9999999999",
+      "email": "sneha@gmail",
+      "joinDate": "2023-08-25T11:07:44.327Z",
+      "referralId": "#6543",
+      "level": "Level 1",
+      "active": true,
+      "totalIncome": "2000"
+    },
+    {
+      "id": 6,
+      "fName": "harshada",
+      "mobno": "8888889999",
+      "email": "harshada@gmail",
+      "joinDate": "2023-05-25T11:07:44.327Z",
+      "referralId": "#2543",
+      "level": "Level 1",
+      "active": false,
+      "totalIncome": "3000"
+    },
+    {
+      "id": 7,
+      "fName": "harshada",
+      "mobno": "8888889999",
+      "email": "harshada@gmail",
+      "joinDate": "2023-05-25T11:07:44.327Z",
+      "referralId": "#2543",
+      "level": "Level 1",
+      "active": true,
+      "totalIncome": "3000"
+    },
+    {
+      "id": 8,
+      "fName": "harshada",
+      "mobno": "8888889999",
+      "email": "harshada@gmail",
+      "joinDate": "2023-05-25T11:07:44.327Z",
+      "referralId": "#2543",
+      "level": "Level 1",
+      "active": false,
+      "totalIncome": "3000"
+    }
+  ],
+  "level": [
+    {
+      "levelName": "level-2",
+      "minUser": 20,
+      "l1Commission": 5,
+      "l2Commission": 10,
+      "downlineRefComm": "",
+      "id": 2
+    },
+    {
+      "levelName": "level-3",
+      "minUser": 250,
+      "l1Commission": 10.5,
+      "l2Commission": 5.6,
+      "id": 3
+    },
+    {
+      "levelName": "sdasd",
+      "minUser": 55,
+      "l1Commission": 30,
+      "l2Commission": 20,
+      "downlineRefComm": "",
+      "id": 4
+    }
+  ],
+  "product": [
+    {
+      "prodName": "aaaaaaa",
+      "prodPrice": 44,
+      "prodImage": "aaaa",
+      "prodDesc": "aaaa",
+      "id": 1
+    },
+    {
+      "prodName": "sssssssssssss",
+      "prodPrice": 44,
+      "prodImage": "sssss",
+      "prodDesc": "<p><u style=\"\"><b style=\"\"><i>ssssssss ewfgtrtr</i></b></u></p><p><i style=\"\">&nbsp;trgtr<sup>gtrg&nbsp;</sup>&nbsp; &nbsp; &nbsp; &nbsp;dfdfsdfasdfsdfsafasdfasdf</i></p>",
+      "id": 2
+    },
+    {
+      "prodName": "ccccccccc",
+      "prodPrice": 50,
+      "prodImage": "C:\\fakepath\\bg7.jpg",
+      "prodDesc": "ccccccc",
+      "id": 3
+    },
+    {
+      "prodName": "asdfas",
+      "prodPrice": 232,
+      "prodImage": "C:\\fakepath\\v3.mp4",
+      "prodDesc": "2322",
+      "id": 4
+    },
+    {
+      "prodName": "ASDF",
+      "prodPrice": 33,
+      "prodImage": "C:\\fakepath\\Annotation 2019-07-18 160007.png",
+      "prodDesc": "<ul><li><span style=\"font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, sans-serif; font-size: medium;\">Vestibulum vitae dui in neque condimentum vulputate. Curabitur in purus at quam tincidunt vestibulum.</span></li><li><span style=\"font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, sans-serif; font-size: medium;\">Proin hendrerit semper sapien, id venenatis nulla consectetur id.</span><span style=\"font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, sans-serif; font-size: medium;\"><br></span></li></ul>",
+      "id": 5
+    },
+    {
+      "prodName": "ttyujkl",
+      "prodPrice": 7777,
+      "prodImage": "C:\\fakepath\\we-are-hiring-background-flat-style_23-2147866419.jpg",
+      "prodDesc": "rrfgh",
+      "id": 6
+    },
+    {
+      "prodName": "sa",
+      "prodPrice": 33,
+      "prodImage": "C:\\fakepath\\bg7.jpg",
+      "prodDesc": "dfgvfv",
+      "id": 7
+    }
+  ],
+  "user_Admin": [
+    {
+      "fName": "sneha",
+      "mobno": "8888888888",
+      "email": "sneha@gmail.com",
+      "adminType": "SM",
+      "password": "12345678",
+      "joinDate": "2023-09-18T04:49:59.505Z",
+      "id": 2,
+      "status": 1,
+      "active": false
+    },
+    {
+      "fName": "neha",
+      "mobno": "9999999999",
+      "email": "neha@gmail.com",
+      "adminType": "SA",
+      "password": "111111111111",
+      "joinDate": "2023-09-18T05:12:53.689Z",
+      "id": 3,
+      "status": 2,
+      "active": false
+    },
+    {
+      "fName": "sneha",
+      "mobno": "9999999999",
+      "email": "fss@dfsd",
+      "adminType": "SM",
+      "password": "9999999999",
+      "joinDate": "2023-09-19T09:00:51.972Z",
+      "id": 4,
+      "status": 1,
+      "active": false
+    },
+    {
+      "fName": "sd",
+      "mobno": "9999999999",
+      "email": "asdA@D",
+      "adminType": "SM",
+      "password": "222222222222",
+      "joinDate": "2023-09-21T05:35:26.226Z",
+      "status": 0,
+      "id": 5
+    },
+    {
+      "fName": "asc",
+      "mobno": "8888888888",
+      "email": "asdas@sdfsd",
+      "adminType": "SM",
+      "password": "888888888888",
+      "joinDate": "2023-09-21T05:39:24.590Z",
+      "status": 0,
+      "id": 6
+    }
+  ]
+}

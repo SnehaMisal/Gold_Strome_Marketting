@@ -1,0 +1,107 @@
+<section class="login-content">
+    <div class="row m-0 align-items-center bg-white vh-100">
+        <div class="col-md-6">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="card card-transparent shadow-none d-flex justify-content-center mb-0 auth-card">
+                        <div class="card-body">
+
+                            <a [routerLink]="['/']" class="navbar-brand d-flex align-items-center justify-content-center mb-3">
+                                <hui-brand-logo [color]="true"></hui-brand-logo>
+                                <!-- <h4 hui-brand-name="hui-brand-name" class="logo-title ms-3 mb-0" data-setting="app_name"></h4> -->
+                            </a>
+                            <h2 class="mb-2 text-center">Sign In</h2>
+                            <p class="text-center">Login to stay connected.</p>
+
+                            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                                <mat-form-field class="example-full-width mb-2 pt-1" appearance="outline">
+                                    <mat-label>Email</mat-label>
+                                    <input type="email" matInput name="email" id="email" formControlName="email" required>
+                                    <!-- <input type="text" matInput formControlName="fName" placeholder="Enter Full Name"> -->
+                                    <mat-error *ngIf="loginForm.get('email').hasError('required')">
+                                        Email is <strong>required</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                                <!-- <div class="form-floating mb-3">
+                                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" id="inputEmail4">
+                                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                        <div *ngIf="f.email.errors.required">Email is required</div>
+                                        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                                    </div>
+                                    <label for="floatingInput">Email address</label>
+                                </div> -->
+                                <!-- <div class="form-floating mb-3">
+                                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" id="inputPassword4">
+                                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                        <div *ngIf="f.password.errors.required">Password is required</div>
+                                        <div *ngIf="f.password.errors.password">Password must be add Specia Charator with number</div>
+                                    </div>
+                                    <label for="floatingPassword">Password</label>
+                                </div> -->
+                                <mat-form-field class="example-full-width mb-2 pt-1" appearance="outline">
+                                    <mat-label>Password</mat-label>
+                                    <input type="password" matInput name="password" id="password" formControlName="password" required>
+                                    <!-- <input type="text" matInput formControlName="fName" placeholder="Enter Full Name"> -->
+                                    <mat-error *ngIf="loginForm.get('password').hasError('required')">
+                                        Password is <strong>required</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Select Login Type</mat-label>
+                                    <mat-select formControlName="loginType" matInput>
+                                        <mat-option value="Admin">Admin</mat-option>
+                                        <mat-option value="CEO">CEO</mat-option>
+                                        <mat-option value="GM">GM</mat-option>
+                                        <mat-option value="SM">SM</mat-option>
+                                        <mat-option value="DSM">DSM</mat-option>
+                                        <mat-option value="SA">SA</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="loginForm.get('loginType').hasError('required')">
+                                        Select loginType is <strong>required</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                                <!-- <div class="form-floating">
+                                    <select class="form-control" name="loginType" id="loginType" formControlName="loginType">
+                                        <option value="1"> Admin -1 </option>
+                                        <option value="2"> CEO - 2 </option>
+                                        <option value="3"> GM - 3 </option>
+                                        <option value="4"> SM - 4 </option>
+                                        <option value="5"> DSM - 5 </option>
+                                        <option value="6"> SA - 6 </option>
+                                    </select>
+                                    <div *ngIf="submitted && f.loginType.errors" class="invalid-feedback">
+                                        <div *ngIf="f.loginType.errors.required">Password is required</div>
+                                    </div>
+                                    <label for="loginType">Select Login Type</label>
+                                </div> -->
+                                <div class="text-end mb-3">
+                                    <a class="small" routerLink="/forgot-password">Forgot password?</a>
+                                </div>
+
+                                <div class="d-grid">
+                                    <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit">Sign in</button>
+                                    <!-- <div class="text-center">
+                                        <a class="small" href="#">Forgot password?</a>
+                                    </div> -->
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sign-bg">
+                <svg width="280" height="230" viewbox="0 0 431 398" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g opacity="0.05">
+                        <rect x="-157.085" y="193.773" width="543" height="77.5714" rx="38.7857" transform="rotate(-45 -157.085 193.773)" fill="#3B8AFF"/>
+                        <rect x="7.46875" y="358.327" width="543" height="77.5714" rx="38.7857" transform="rotate(-45 7.46875 358.327)" fill="#3B8AFF"/>
+                        <rect x="61.9355" y="138.545" width="310.286" height="77.5714" rx="38.7857" transform="rotate(45 61.9355 138.545)" fill="#3B8AFF"/>
+                        <rect x="62.3154" y="-190.173" width="543" height="77.5714" rx="38.7857" transform="rotate(45 62.3154 -190.173)" fill="#3B8AFF"/>
+                    </g>
+                </svg>
+            </div>
+        </div>
+        <div class="col-md-6 d-md-block d-none bg-primary p-0 vh-100 overflow-hidden">
+            <img src="assets/images/auth/01.png" class="img-fluid gradient-main animated-scaleX" alt="images" loading="lazy"></div>
+    </div>
+</section>

@@ -1,0 +1,227 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="flex-wrap d-flex justify-content-between align-items-center p-4">
+            <div>
+                <h3 class="mat-h1">TDS Report</h3>
+            </div>
+            <div>
+                <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                    <ol class="mb-0 breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a routerLink="/admin/dashboard">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">TDS Report</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <mat-card>
+        <mat-card-header class="justify-content-between align-items-center">
+            <mat-card-title><button mat-raised-button color="primary" (click)="exportTable()">Export</button></mat-card-title>
+            <mat-form-field appearance="outline">
+                <mat-label>Select a month and year</mat-label>
+                <mat-select [(value)]="selectedMonthYear" name="months" (selectionChange)="onMonthYearSelectionChange($event)">
+                    <mat-option *ngFor="let monthYear of monthYears" [value]="monthYear">
+                        {{ monthYear }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <!-- <mat-form-field>
+                <mat-label>Search</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+            </mat-form-field> -->
+        </mat-card-header>
+        <mat-card-content>
+            <div class=" table-responsive">
+
+                <section class="example-container " tabindex="0">
+                    <table matSort mat-table [dataSource]="dataSource" class="cust_table   table-striped  table-bordered">
+                        <ng-container matColumnDef="srNo">
+                            <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2" style="vertical-align: middle;">Sr. No.</th>
+                        </ng-container>
+                        <ng-container matColumnDef="sr_No">
+                            <th mat-header-cell *matHeaderCellDef [ngStyle]="{'display': 'none'}"></th>
+                            <td mat-cell *matCellDef="let element; let i = index;">{{i+1}} </td>
+                            <th mat-footer-cell *matFooterCellDef [attr.colspan]="13"> Total </th>
+                        </ng-container>
+
+                        <ng-container matColumnDef="userName">
+                            <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2" style="vertical-align: middle;">User Name</th>
+                        </ng-container>
+                        <ng-container matColumnDef="user_name">
+                            <th mat-header-cell *matHeaderCellDef [ngStyle]="{'display': 'none'}"></th>
+                            <td mat-cell *matCellDef="let element"> {{element.user_name}} </td>
+                            <th mat-footer-cell *matFooterCellDef [ngStyle]="{'display': 'none'}"> </th>
+                        </ng-container>
+
+
+                        <ng-container matColumnDef="panNo">
+                            <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2" style="vertical-align: middle;">Pan No.</th>
+                        </ng-container>
+                        <ng-container matColumnDef="pan_no">
+                            <th mat-header-cell *matHeaderCellDef [ngStyle]="{'display': 'none'}"></th>
+                            <td mat-cell *matCellDef="let element"> {{element.pan_no}} </td>
+                            <th mat-footer-cell *matFooterCellDef [ngStyle]="{'display': 'none'}"> </th>
+                        </ng-container>
+                        <ng-container matColumnDef="week_1">
+                            <th mat-header-cell *matHeaderCellDef [attr.colspan]="2">Week 1 ({{ firstWeek?.week_1?.date }})</th>
+                        </ng-container>
+                        <ng-container matColumnDef="week_2">
+                            <th mat-header-cell *matHeaderCellDef [attr.colspan]="2">Week 2 ({{ secoundWeek?.week_2?.date }})</th>
+                        </ng-container>
+                        <ng-container matColumnDef="week_3">
+                            <th mat-header-cell *matHeaderCellDef [attr.colspan]="2">Week 3 ({{ thirdWeek?.week_3?.date }})</th>
+                        </ng-container>
+                        <ng-container matColumnDef="week_4">
+                            <th mat-header-cell *matHeaderCellDef [attr.colspan]="2">Week 4 ({{ fourthWeek?.week_4?.date }})</th>
+                        </ng-container>
+                        <ng-container matColumnDef="week_5">
+                            <th mat-header-cell *matHeaderCellDef [attr.colspan]="2">Week 5 ({{ fifthWeek?.week_5?.date }})</th>
+                        </ng-container>
+
+
+                        <ng-container matColumnDef="week_1_amount">
+                            <th mat-header-cell *matHeaderCellDef>w1 Amount</th>
+                            <td mat-cell *matCellDef="let element"> {{element.week_1.amount }} </td>
+                            <th mat-footer-cell *matFooterCellDef [ngStyle]="{'display': 'none'}"> </th>
+                        </ng-container>
+                        <ng-container matColumnDef="week_1_tds">
+                            <th mat-header-cell *matHeaderCellDef> w1 TDS</th>
+                            <td mat-cell *matCellDef="let element"> {{element.week_1.tds }} </td>
+                            <th mat-footer-cell *matFooterCellDef [ngStyle]="{'display': 'none'}"> </th>
+                        </ng-container>
+                        <ng-container matColumnDef="week_2_amount">
+                            <th mat-header-cell *matHeaderCellDef>w2 Amount</th>
+                            <td mat-cell *matCellDef="let element"> {{element.week_2.amount }} </td>
+                            <th mat-footer-cell *matFooterCellDef [ngStyle]="{'display': 'none'}"> </th>
+                        </ng-container>
+                        <ng-container matColumnDef="week_2_tds">
+                            <th mat-header-cell *matHeaderCellDef>w2 TDS</th>
+                            <td mat-cell *matCellDef="let element"> {{element.week_2.tds }} </td>
+                            <th mat-footer-cell *matFooterCellDef [ngStyle]="{'display': 'none'}"> </th>
+                        </ng-container>
+                        <ng-container matColumnDef="week_3_amount">
+                            <th mat-header-cell *matHeaderCellDef>w3 Amount</th>
+                            <td mat-cell *matCellDef="let element"> {{element.week_3.amount }} </td>
+                            <th mat-footer-cell *matFooterCellDef [ngStyle]="{'display': 'none'}"> </th>
+                        </ng-container>
+                        <ng-container matColumnDef="week_3_tds">
+                            <th mat-header-cell *matHeaderCellDef>w3 TDS</th>
+                            <td mat-cell *matCellDef="let element"> {{element.week_3.tds }} </td>
+                            <th mat-footer-cell *matFooterCellDef [ngStyle]="{'display': 'none'}"> </th>
+                        </ng-container>
+                        <ng-container matColumnDef="week_4_amount">
+                            <th mat-header-cell *matHeaderCellDef>w4 Amount</th>
+                            <td mat-cell *matCellDef="let element"> {{element.week_4.amount }} </td>
+                            <th mat-footer-cell *matFooterCellDef [ngStyle]="{'display': 'none'}"> </th>
+                        </ng-container>
+                        <ng-container matColumnDef="week_4_tds">
+                            <th mat-header-cell *matHeaderCellDef>w4 TDS</th>
+                            <td mat-cell *matCellDef="let element"> {{element.week_4.tds }} </td>
+                            <th mat-footer-cell *matFooterCellDef [ngStyle]="{'display': 'none'}"> </th>
+                        </ng-container>
+                        <ng-container matColumnDef="week_5_amount">
+                            <th mat-header-cell *matHeaderCellDef>w5 Amount</th>
+                            <td mat-cell *matCellDef="let element"> {{element.week_5.amount }} </td>
+                            <th mat-footer-cell *matFooterCellDef [ngStyle]="{'display': 'none'}"> </th>
+                        </ng-container>
+                        <ng-container matColumnDef="week_5_tds">
+                            <th mat-header-cell *matHeaderCellDef>w5 TDS</th>
+                            <td mat-cell *matCellDef="let element"> {{element.week_5.tds }} </td>
+                            <th mat-footer-cell *matFooterCellDef [ngStyle]="{'display': 'none'}"> </th>
+                        </ng-container>
+
+                        <ng-container matColumnDef="totalAmount">
+                            <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2" style="vertical-align: middle;">Total Amount</th>
+                        </ng-container>
+                        <ng-container matColumnDef="total_amount">
+                            <th mat-header-cell *matHeaderCellDef [ngStyle]="{'display': 'none'}"></th>
+                            <td mat-cell *matCellDef="let element"> {{element.total_amount}} </td>
+                            <th mat-footer-cell *matFooterCellDef> 100000 </th>
+                        </ng-container>
+                        <ng-container matColumnDef="totalTDS">
+                            <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2" style="vertical-align: middle;">Total TDS</th>
+                        </ng-container>
+                        <ng-container matColumnDef="total_tds">
+                            <th mat-header-cell *matHeaderCellDef [ngStyle]="{'display': 'none'}"></th>
+                            <td mat-cell *matCellDef="let element"> {{element.total_tds}} </td>
+                            <th mat-footer-cell *matFooterCellDef> 200000 </th>
+                        </ng-container>
+
+
+
+                        <tr mat-header-row *matHeaderRowDef="['srNo','userName', 'panNo', 'week_1','week_2','week_3','week_4','week_5','totalAmount','totalTDS']; sticky: true"></tr>
+                        <tr mat-header-row *matHeaderRowDef="dataColumns; sticky: true"></tr>
+
+                        <!-- <tr mat-footer-row *matFooterRowDef="dataColumns; sticky: true"></tr> -->
+                        <tr mat-row *matRowDef="let row; columns: dataColumns; sticky: true"></tr>
+
+                        <!-- Sticky footer row -->
+                        <tr mat-footer-row *matFooterRowDef="dataColumns; sticky: true"></tr>
+
+                        <!-- <mat-header-row *matHeaderRowDef="['userName', 'panNo', 'week_1','week_2','week_3','week_4','week_5','totalAmount','totalTDS']"></mat-header-row>
+                    <mat-header-row *matHeaderRowDef="dataColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: dataColumns;"></mat-row>
+                    <mat-footer-row *matFooterRowDef="dataColumns"></mat-footer-row> -->
+                    </table>
+                </section>
+                <table id="export_Excel" class="d-none text-center table table-striped table-bordered">
+                    <thead>
+                        <tr class="table-bordered" style="vertical-align: middle;">
+                            <th rowspan="2">Sr. No.</th>
+                            <th rowspan="2">User Name</th>
+                            <th rowspan="2">Pan No.</th>
+                            <th colspan="2">Week 1 ({{ firstWeek?.week_1?.date }})</th>
+                            <th colspan="2">Week 2 ({{ secoundWeek?.week_2?.date }})</th>
+                            <th colspan="2">Week 3 ({{ thirdWeek?.week_3?.date }})</th>
+                            <th colspan="2">Week 4 ({{ fourthWeek?.week_4?.date }})</th>
+                            <th colspan="2">Week 5 ({{ fifthWeek?.week_5?.date }})</th>
+                            <th rowspan="2">Total Amount</th>
+                            <th rowspan="2">Total TDS</th>
+                        </tr>
+                        <tr>
+                            <th> Amount</th>
+                            <th>TDS</th>
+                            <th>Amount</th>
+                            <th>TDS</th>
+                            <th>Amount</th>
+                            <th>TDS</th>
+                            <th>Amount</th>
+                            <th>TDS</th>
+                            <th>Amount</th>
+                            <th>TDS</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-body table-responsive">
+                        <tr *ngFor="let element of reverseDataSource, let i=index">
+                            <td>{{i + 1}}</td>
+                            <td>{{element.user_name}}</td>
+                            <td>{{element.pan_no}}</td>
+                            <td>{{element.week_1.amount }}</td>
+                            <td>{{element.week_1.tds}}</td>
+                            <td>{{element.week_2.amount}}</td>
+                            <td>{{element.week_2.tds}}</td>
+                            <td>{{element.week_3.amount}}</td>
+                            <td>{{element.week_3.tds}}</td>
+                            <td>{{element.week_4.amount}}</td>
+                            <td>{{element.week_4.tds}}</td>
+                            <td>{{element.week_5.amount}}</td>
+                            <td>{{element.week_5.tds}}</td>
+                            <td>{{element.total_amount}}</td>
+                            <td>{{element.total_tds}}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="13">Total</th>
+                            <td>10000</td>
+                            <td>2000</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <!-- <mat-paginator #paginatorRef aria-label="Select page of users"></mat-paginator> -->
+        </mat-card-content>
+    </mat-card>
+</div>

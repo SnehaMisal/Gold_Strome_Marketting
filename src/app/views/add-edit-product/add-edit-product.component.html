@@ -1,0 +1,55 @@
+<h1 mat-dialog-title>{{data ? 'Edit':'Add'}} Voucher</h1>
+<form action="" method="post" [formGroup]="voucherForm" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content>
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field class="example-full-width mb-2 pt-1" appearance="outline">
+                    <mat-label>Voucher Name</mat-label>
+                    <input type="text" matInput name="VoucherName" id="VoucherName" formControlName="VoucherName" required>
+                    <mat-error *ngIf="voucherForm.get('VoucherName').hasError('required')">
+                        Voucher Name is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field class="example-full-width mb-2 pt-1" appearance="outline">
+                    <mat-label>Voucher Price</mat-label>
+                    <input type="number" matInput name="voucherPrice" id="voucherPrice" formControlName="voucherPrice" required>
+                    <mat-error *ngIf="voucherForm.get('voucherPrice').hasError('required')">
+                        Voucher Price is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <!-- <div class="col-md-6 ">
+                <mat-label>Voucher Image</mat-label>
+                <input type="file" accept="image/*" name="VoucherImage" id="VoucherImage" formControlName="VoucherImage" (change)="onImageSelected($event)" required>
+                
+                <mat-error *ngIf="fileInputInvalid">Please select a Voucher image.</mat-error>
+
+            </div> -->
+            <div class="col-md-12">
+                <mat-form-field class="example-full-width mb-2 pt-1" appearance="outline">
+                    <mat-label>Voucher Image *</mat-label>
+                    <mat-toolbar>                        
+                        <input type="file"  accept="image/*" class="form-control" name="VoucherImage" id="fileInput" formControlName="VoucherImage" (change)="onFileSelected($event)"  >
+                        <img [src]="imgURL" height="100" *ngIf="imgURL" class="imgURL">
+                        <input matInput class="form-control img_name" [value]="img_name ? img_name : 'Select Image'"  disabled/>
+                    </mat-toolbar>
+                    <mat-error *ngIf="voucherForm.get('VoucherImage').hasError('required')">
+                        Voucher Image is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-12">
+                <!-- <mat-form-field class="example-full-width mb-2 pt-1" appearance="outline">-->
+                <mat-label>Voucher Description</mat-label>
+                <div matInput formControlName="voucherDescription" name="voucherDescription" id="voucherDescription" [ngxSummernote]="config" required></div>
+
+            </div>
+        </div>
+    </div>
+    <div mat-dialog-actions class="justify-content-center">
+        <button mat-button mat-raised-button [mat-dialog-close]="false" color="warn" type="button">Close</button>
+        <button type="submit" mat-button mat-raised-button color="primary" cdkFocusInitial>{{data ? 'Update':'Save'}}</button>
+    </div>
+</form>

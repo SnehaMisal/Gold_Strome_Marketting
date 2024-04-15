@@ -1,0 +1,88 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="flex-wrap d-flex justify-content-between align-items-center p-4">
+            <div>
+                <h3 class="mat-h1">Generated Bill </h3>
+            </div>
+            <div>
+                <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                    <ol class="mb-0 breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a routerLink="/gm/dashboard">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Generated Bill </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <mat-card>
+        <mat-card-header class="justify-content-between align-items-center">
+            <mat-form-field>
+                <mat-label>Search</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+            </mat-form-field>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="table-responsive">
+                <table mat-table [dataSource]="dataSource" class="table table-striped table-responsive">
+                    <ng-container matColumnDef="srNo">
+                        <th mat-header-cell *matHeaderCellDef> Sr. No. </th>
+                        <td mat-cell *matCellDef="let item; let i = index"> {{ (paginatorRef.pageIndex * paginatorRef.pageSize) + (i + 1) }} </td>
+                    </ng-container>
+                    <!-- <ng-container matColumnDef="joinDate">
+                        <th mat-header-cell *matHeaderCellDef> Created Date </th>
+                        <td mat-cell *matCellDef="let element"> {{element.joinDate | date:"dd/MM/yyyy HH:MM "}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="createName">
+                        <th mat-header-cell *matHeaderCellDef> Created By </th>
+                        <td mat-cell *matCellDef="let element"> {{element.createName}} </td>
+                    </ng-container> -->
+                    <!-- <ng-container matColumnDef="approvalDate">
+                        <th mat-header-cell *matHeaderCellDef> Approved Date </th>
+                        <td mat-cell *matCellDef="let element"> {{element.joinDate | date:"dd/MM/yyyy HH:MM "}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="approvalBy">
+                        <th mat-header-cell *matHeaderCellDef> Approved By </th>
+                        <td mat-cell *matCellDef="let element"> {{element.createName}} </td>
+                    </ng-container> -->
+                    <ng-container matColumnDef="monthName">
+                        <th mat-header-cell *matHeaderCellDef> Month Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.monthName}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="revenueAmount">
+                        <th mat-header-cell *matHeaderCellDef> Revenue Amount </th>
+                        <td mat-cell *matCellDef="let element" class="text-primary"> {{element.amount}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="expencesAmount">
+                        <th mat-header-cell *matHeaderCellDef> Expences Amount </th>
+                        <td mat-cell *matCellDef="let element" class="text-danger"> {{element.amount}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="netAmount">
+                        <th mat-header-cell *matHeaderCellDef> Net Amount </th>
+                        <td mat-cell *matCellDef="let element" class="text-success fw-bold  "> {{element.amount}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="action">
+                        <th mat-header-cell *matHeaderCellDef> Action </th>
+                        <td mat-cell *matCellDef="let element">
+                            <a routerLink="/sa/show_bill/" mat-mini-fab color="success">
+                                <mat-icon>visibility</mat-icon>
+                            </a>
+                            <!-- <button mat-mini-fab color="success" (click)="viewBill(element.id)"><mat-icon>visibility</mat-icon></button> -->
+                            <!-- <button mat-mini-fab color="success" (click)="downloadBill(element.id)"><mat-icon>save_alt</mat-icon></button> -->
+                            <!-- <button mat-mini-fab color="warn" (click)="deleteBill('dsmTable',element.id)"><mat-icon>delete</mat-icon></button> -->
+                        </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    <tr class="mat-row text-center" *matNoDataRow>
+                        <td class="mat-cell" colspan="9">No data matching the filter "{{input.value}}"</td>
+                    </tr>
+                </table>
+            </div>
+            <mat-paginator #paginatorRef [pageSizeOptions]="[10]" aria-label="Select page of periodic elements">
+            </mat-paginator>
+        </mat-card-content>
+    </mat-card>
+</div>

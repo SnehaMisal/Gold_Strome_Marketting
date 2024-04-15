@@ -1,0 +1,88 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="flex-wrap d-flex justify-content-between align-items-center p-4">
+            <div>
+                <h3 class="mat-h1">Manage Level</h3>
+            </div>
+            <div>
+                <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                    <ol class="mb-0 breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a routerLink="/admin/dashboard">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Manage Level</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <mat-card>
+        <mat-card-header class="justify-content-between align-items-center">
+            <!-- <mat-card-title><button mat-raised-button color="primary" (click)="addLevel()">Create Level</button></mat-card-title> -->
+
+            <!-- <mat-form-field>
+                <mat-label>Search</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+            </mat-form-field> -->
+        </mat-card-header>
+        <mat-card-content>
+
+            <div class="table-responsive">
+                <table mat-table [dataSource]="dataSource" class="table table-striped table-responsive">
+
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="id">
+                        <th mat-header-cell *matHeaderCellDef> Sr. No. </th>
+                        <td mat-cell *matCellDef="let element; let i = index;">{{ i + 1 }} </td>
+                    </ng-container>
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="levelName">
+                        <th mat-header-cell *matHeaderCellDef> Level Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.levelName}} </td>
+                    </ng-container>
+
+                    <!-- Minimum User  Column -->
+                    <ng-container matColumnDef="minUser">
+                        <th mat-header-cell *matHeaderCellDef> Minimum User </th>
+                        <td mat-cell *matCellDef="let element"> {{element.minUser}} </td>
+                    </ng-container>
+                    <!-- Minimum User  Column -->
+                    <ng-container matColumnDef="allowCommission">
+                        <th mat-header-cell *matHeaderCellDef> Allow Commision </th>
+                        <td mat-cell *matCellDef="let element">
+                            <p class="h4 mb-1"> <span _ngcontent-eoo-c96="" class=" text-primary" *ngIf="element.l1Commission"><b>L1 : {{element.l1Commission}}% </b> </span></p>
+                            <p class="h4 mb-1"> <span _ngcontent-eoo-c96="" class="text-success " *ngIf="element.l2Commission"><b>L2 : {{element.l2Commission}}%</b></span></p>
+                            <p class="h4 mb-1"> <span _ngcontent-eoo-c96="" class="text-danger" *ngIf="element.downlineRefComm"><b>Downline : {{element.downlineRefComm}}%</b></span></p>
+                        </td>
+                    </ng-container>
+                    <!-- Status Column -->
+                    <ng-container matColumnDef="status">
+                        <th mat-header-cell *matHeaderCellDef> Status </th>
+                        <td mat-cell *matCellDef="let element">
+                            <mat-slide-toggle [checked]="element.active" (change)="toggleLevel(element)">
+                                {{ element.active ? 'Active' : 'Inactive' }}
+                            </mat-slide-toggle>
+                        </td>
+                    </ng-container>
+                    <!-- Action Column -->
+                    <ng-container matColumnDef="action">
+                        <th mat-header-cell *matHeaderCellDef> Action </th>
+                        <td mat-cell *matCellDef="let element">
+                            <button mat-mini-fab color="primary" (click)="editLevel(element)"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="edit">edit</mat-icon></button>
+                            <button mat-mini-fab color="warn" (click)="deleteLevel('levelTable',element.id)"><mat-icon>delete</mat-icon></button>
+                        </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                    <!-- Row shown when there is no matching data. -->
+                    <!-- <tr class="mat-row text-center" *matNoDataRow>
+                        <td class="mat-cell" colspan="7">No data matching the filter "{{input.value}}"</td>
+                    </tr> -->
+                </table>
+            </div>
+            <!-- <mat-paginator #paginatorRef [pageSizeOptions]="[10]" aria-label="Select page of periodic elements">
+            </mat-paginator> -->
+        </mat-card-content>
+    </mat-card>
+</div>

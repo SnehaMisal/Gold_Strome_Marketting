@@ -1,0 +1,7 @@
+<h1 mat-dialog-title>Voucher Description</h1>
+<div mat-dialog-content class="p-3 border">
+    <p [innerHTML]="data.description">{{ data.description }}</p>
+</div>
+<div mat-dialog-actions class="justify-content-center">
+    <button mat-button color="warn" (click)="closeDialog()">Close</button>
+</div>

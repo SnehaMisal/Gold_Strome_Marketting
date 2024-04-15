@@ -1,0 +1,175 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$my-app-primary: mat.define-palette(mat.$indigo-palette);
+$my-app-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+// The warn palette is optional (defaults to red).
+$my-app-warn: mat.define-palette(mat.$red-palette);
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$my-app-theme: mat.define-light-theme(( color: ( primary: $my-app-primary, accent: $my-app-accent, warn: $my-app-warn, )));
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($my-app-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+
+/* Importing MLM SCSS file. */
+
+@import 'assets/scss/hope-ui.scss';
+@import 'assets/scss/custom.scss';
+@import 'assets/scss/dark.scss';
+@import 'assets/scss/rtl.scss';
+// @import 'assets/scss/pro.scss';
+@import 'assets/scss/customizer.scss';
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+// Custom Angular Style
+.dropdown-toggle.hide-toggler {
+    &::after {
+        content: unset;
+    }
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-form-field {
+    display: block !important;
+}
+
+// .mat-card-header-text {
+//     display: none !important;
+// }
+.mat-h1 {
+    font: 500 24px / 32px Roboto, "Helvetica Neue", sans-serif !important;
+    letter-spacing: normal !important;
+    margin: 0 !important;
+}
+
+.mat-h3 {
+    font: 500 18px / 32px Roboto, "Helvetica Neue", sans-serif !important;
+    letter-spacing: normal !important;
+    margin: 0 0 10px!important;
+}
+
+.mat-form-field {
+    display: block !important;
+}
+
+.fw-semibold {
+    font-weight: 500 !important;
+}
+
+.mat-card {
+    box-shadow: 0 10px 30px 0 rgba(54, 0, 97, 0.3) !important;
+}
+
+// .mat-form-field-wrapper {
+//     padding-bottom: 0;
+// }
+// .mat-form-field-infix {
+//     border-top: 0;
+// }
+.mat-form-field-infix {
+    width: auto !important;
+}
+
+.table-striped>tbody>tr:nth-of-type(even)>* {
+    color: #232D42;
+}
+
+#apvl_status .mat-form-field-wrapper {
+    padding-bottom: 0;
+}
+
+.mat-button.mat-success,
+.mat-stroked-button.mat-success {
+    color: #155724;
+}
+
+.mat-button.mat-success:hover,
+.mat-stroked-button.mat-success:hover {
+    background-color: #f0fff3;
+}
+
+.mat-raised-button.mat-success,
+.mat-flat-button.mat-success,
+.mat-fab.mat-success,
+.mat-mini-fab.mat-success {
+    color: #f0fff3;
+    background-color: #155724;
+}
+
+.mat-icon-button.mat-success {
+    color: #155724;
+}
+
+// ::-webkit-scrollbar {
+//     width: 4px;
+//     overflow-y: scroll;
+//     overflow-x: scroll;
+//     background: rgba(222, 222, 222, .75);
+//     box-shadow: inset 0 0 4px #707070;
+// }
+// ::-webkit-scrollbar-thumb {
+//     background: #7C01E0;
+//     border-radius: 10px;
+// }
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    border-radius: 30px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 30px;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+::-webkit-scrollbar-button,
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece,
+::-webkit-scrollbar-corner,
+::-webkit-resizer {
+    display: none;
+}
+
+::-webkit-scrollbar-track-piece:start {
+    margin-top: 450px;
+}
+
+.cus_badge {
+    position: relative;
+    right: 6px;
+    top: -15px;
+    padding: 2px 4px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+// #export_Excel {
+//     position: relative;
+// }
+// .table-body {
+//     max-height: 100px;
+//     /* Set your desired height */
+//     overflow-y: auto;
+// }

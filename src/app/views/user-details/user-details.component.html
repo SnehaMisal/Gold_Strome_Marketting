@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="flex-wrap d-flex justify-content-between align-items-center p-4">
+            <div>
+                <h3 class="mat-h1">User Details</h3>
+            </div>
+            <div>
+                <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                    <ol class="mb-0 breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a routerLink="/admin/dashboard">Home</a>
+                        </li>
+                        <li class="breadcrumb-item " aria-current="page">User Managemnt</li>
+                        <li class="breadcrumb-item active" aria-current="page">User Details</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex flex-wrap align-items-center justify-content-between">
+                    <div class="d-flex flex-wrap align-items-center">
+                        <div class="  me-3 mb-3 mb-lg-0 profile-logo profile-logo1">
+                            <img src="assets/images/avatars/01.png" alt="User-Profile" class="theme-color-default-img img-fluid rounded-pill avatar-60" loading="lazy">
+                        </div>
+                        <div class="d-flex flex-wrap align-items-center mb-3 mb-sm-0">
+                            <h4 class="me-2 h4 mat-h3">Austin Robertson</h4>
+                            <span class="text-primary">(₹3,000.00)</span>
+                        </div>
+                    </div>
+                    <div class="d-flex nav-pills mb-0 text-center " id="nav-tab1" ngbNav #nav="ngbNav" role="tablist">
+                        <div [routerLinkActive]="'active'">
+                            <a [routerLinkActive]="'active'" routerLink="/admin/user_profile/1" class="nav-link">Profile</a>
+                        </div>
+                        <div [routerLinkActive]="'active'" ngbNavItem>
+                            <a [routerLinkActive]="'active'" routerLink="/admin/user-l1-referral/1" class="nav-link">L1 Referral</a>
+                        </div>
+                        <div [routerLinkActive]="'active'">
+                            <a [routerLinkActive]="'active'" routerLink="/admin/user-l2-referral/1" class="nav-link">L2 Referral</a>
+                        </div>
+                        <div [routerLinkActive]="'active'">
+                            <a [routerLinkActive]="'active'" routerLink="/admin/downline-referral/1" class="nav-link">Downline Referral</a>
+                        </div>
+                        <div [routerLinkActive]="'active'">
+                            <a [routerLinkActive]="'active'" routerLink="/admin/revenue-report/1" class="nav-link">Revenue Report</a>
+                        </div>
+                        <div [routerLinkActive]="'active'">
+                            <a [routerLinkActive]="'active'" routerLink="/admin/payout-request/1" class="nav-link">Payout Request</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <router-outlet></router-outlet>
+    </div>
+</div>

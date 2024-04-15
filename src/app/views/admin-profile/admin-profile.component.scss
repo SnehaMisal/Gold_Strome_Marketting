@@ -1,0 +1,119 @@
+.edit-profile .profile-title {
+    // border-bottom: 1px solid #ecf3fa;
+    margin-bottom: 15px;
+    padding-bottom: 20px;
+}
+
+.edit-profile .profile-title .media {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.media {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: center;
+}
+
+.profile_img {
+    background: linear-gradient(to right, white, white), linear-gradient(to right, red, blue);
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    padding: 5px;
+    height: 100px;
+    width: 100px !important;
+    object-fit: contain;
+}
+
+.edit-profile .profile-title .media .media-body {
+    margin-left: 25px;
+}
+
+.edit-profile .card .card-body h3 {
+    font-weight: 600;
+}
+
+// name
+#fileInput {
+    position: absolute;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+  }
+  .img_name:disabled{
+    background-color: #fff;
+    // border: 1px solid #e0e0e0;
+    // padding: 0.5rem 1rem;
+    height: 18px;
+    color: currentColor;
+    font-weight: 400;
+    font-size: 14px;
+  }
+  .mat-toolbar-single-row {
+    height: auto !important;
+    background: transparent;
+    padding: 0;
+  }
+  
+  .mat-toolbar-single-row button {
+    width: 100px;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+  .preview {
+    max-width: 200px;
+    vertical-align: middle;
+  }
+  .mat-form-field-appearance-legacy.mat-form-field-disabled .mat-form-field-underline{
+        background-image:none !important
+  }
+
+.avatar-edit {
+  position: relative;
+  right: 20px;
+  z-index: 1;
+  top: 25px;
+  }
+ .avatar-edit input {
+    display: none;
+  }
+.avatar-edit input + label {
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    margin-bottom: 0;
+    border-radius: 100%;
+    background: #FFFFFF;
+    border: 1px solid #ddd;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    font-weight: normal;
+    transition: all 0.2s ease-in-out;
+    padding: 5px;
+  }
+.avatar-edit input + label:hover {
+    background: #f1f1f1;
+    border-color: #d6d6d6;
+  }
+// .avatar-edit input + label:after {
+//     content: "\f040";
+//     font-family: 'FontAwesome';
+//     color: #757575;
+//     position: absolute;
+//     top: 10px;
+//     left: 0;
+//     right: 0;
+//     text-align: center;
+//     margin: auto;
+//   }
